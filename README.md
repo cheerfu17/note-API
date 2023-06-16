@@ -21,8 +21,8 @@ Run the app normally
 
 ## Endpoints list:
 
-GET: /api/note - Get notes list
-GET: /api/note/:id - Get note by {id}
-POST: /api/note - Create note. Json params: title, body
-PATCH: /api/note - Change note by {id}. Json params: title, body
+GET: /api/note - Get notes list\
+GET: /api/note/:id - Get note by {id}\
+POST: /api/note - Create note. Json params: title, body\
+PATCH: /api/note - Change note by {id}. Json params: title, body\
 DELETE: /api/note/:id - Delete note by {id}
