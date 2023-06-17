@@ -1,4 +1,4 @@
-class userController{
+class authController{
     async sign_in(req, res){
         try{
             
