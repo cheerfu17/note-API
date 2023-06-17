@@ -10,4 +10,4 @@ User.init({
     picture: {type: DataTypes.STRING}
 },{sequelize, modelName: "user"});
 
-export default new User();
+export default User;

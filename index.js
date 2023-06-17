@@ -1,7 +1,7 @@
 import express from 'express'
 import { sequelize } from './database/db.js'
 import { noteRouter } from './Routers/noteRouter.js'
-import { authRouter } from './Routers/authRouter.js'
+import authRouter from './Routers/authRouter.js'
 
 
 const PORT = 5050;
