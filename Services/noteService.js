@@ -1,26 +1,25 @@
 import Note from "../db_models/Note.js";
 class noteService{
-    async create(note){
-        
+    async create(note){     
         const createdNote = await Note.create(note);
-        return createdNote;
+        return createdNote.toJSON();
     }
     async get(){
         const notes = await Note.findAll();
-        return notes;
+        return notes.toJSON();
     }
     async get_one(id){
         if (!id){
-            throw new Error('id not found');
+            throw new Error("id not found");
         }
-        const note = await Note.findOne({where: {'id': id}});
+        const note = await Note.findByPk(id);
         if (!note)
-            return {message: "Not Found"}
-        return note;
+            return {"message": "Note with this id not found"}
+        return note.toJSON();
     }
     async delete(id){
         if (!id){
-            throw new Error('id not found');
+            throw new Error("id not found");
         }
         await Note.destroy({where: {'id': id}});
         return {message: "Note has been deleted"};
@@ -28,11 +27,13 @@ class noteService{
 
     async put(id, note){
         if (!id){
-            throw new Error('id not found');
+            throw new Error("id not found");
         }
-        const _note = await Note.findOne({where: {'id': id}});
+        const _note = await Note.findByPk(id);
+        if (!_note)
+            return {"message": "Note with this id not found"}
         _note.update(note);
-        return _note;
+        return _note.toJSON();
     }
 }
 

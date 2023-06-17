@@ -4,10 +4,12 @@ class Note extends Model{}
 
 Note.init({
     title : {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
     },
     body: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true
     }
 },{
     sequelize, 
