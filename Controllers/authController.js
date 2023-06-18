@@ -9,7 +9,6 @@ class authController{
             }
             const {nick_name, password} = req.body;
             const user = await authService.sign_up(nick_name, password);
-            console.log(user);
             res.json(user);
         }catch(e){
             console.log(e);
@@ -18,10 +17,12 @@ class authController{
     }
     async sign_in(req, res){
         try{
-            
+            const {nick_name, password} = req.body;
+            const login = await authService.sign_in(nick_name, password);
+            return res.json(login);
         }catch(e){
             console.log(e);
-            res.status(400).json({"error": "Registration error", "message": e.message});
+            res.status(400).json({"error": "Login error", "message": e.message});
         }
     }
 }

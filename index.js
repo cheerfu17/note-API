@@ -2,9 +2,9 @@ import express from 'express'
 import { sequelize } from './database/db.js'
 import { noteRouter } from './Routers/noteRouter.js'
 import authRouter from './Routers/authRouter.js'
+import 'dotenv/config.js'
 
-
-const PORT = 5050;
+const PORT = process.env.PORT || 5050;
 const app = express();
 
 app.use(express.json());
