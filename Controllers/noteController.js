@@ -10,7 +10,7 @@ class noteController{
     }
     async get(req, res){
         try{
-            const notes = await noteService.get();
+            const notes = await noteService.get()
             res.json(notes);
         }catch(e){ 
             res.status(500).json(e);

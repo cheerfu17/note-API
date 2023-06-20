@@ -6,7 +6,7 @@ class noteService{
     }
     async get(){
         const notes = await Note.findAll();
-        return notes.toJSON();
+        return notes;
     }
     async get_one(id){
         if (!id){

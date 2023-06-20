@@ -27,7 +27,8 @@ class authService{
         if (!user){
             throw new Error("No user found with this nickname");
         }
-        const validPassword = bcrypt.compare(password, user.password);
+        const validPassword = await bcrypt.compare(password, user.password);
+        console.log(validPassword);
         if (!validPassword){
             throw new Error("Incorrect password");
         }
