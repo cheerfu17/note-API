@@ -1,3 +1,4 @@
+import { json } from "sequelize";
 import Note from "../db_models/Note.js";
 class noteService{
     async create(note){     
@@ -21,6 +22,10 @@ class noteService{
         if (!id){
             throw new Error("id not found");
         }
+        const note = await Note.findByPk(id);
+        if (!note){
+            throw new Error("Note not found");
+        }
         await Note.destroy({where: {'id': id}});
         return {message: "Note has been deleted"};
     }
@@ -31,7 +36,7 @@ class noteService{
         }
         const _note = await Note.findByPk(id);
         if (!_note)
-            return {"message": "Note with this id not found"}
+            throw new Error ("Note with this id not found")
         _note.update(note);
         return _note.toJSON();
     }
