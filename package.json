@@ -16,5 +16,11 @@
     "nodemon": "^2.0.22",
     "sequelize": "^6.32.0",
     "sqlite3": "^5.1.6"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.0"
   }
 }
