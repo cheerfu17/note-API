@@ -15,7 +15,7 @@ class noteController{
     }
     async get(req, res){
         try{
-            const notes = await noteService.get()
+            const notes = await noteService.get(req.body.userId);
             res.json(notes);
         }catch(e){ 
             res.status(500).json(e);
@@ -23,7 +23,7 @@ class noteController{
     }
     async get_one(req, res){
         try{
-            const note = await noteService.get_one(req.params.id);
+            const note = await noteService.get_one(req.params.id, req.body.userId);
             res.json(note);
         }catch(e){
             res.status(500).json(e);
@@ -31,7 +31,7 @@ class noteController{
     }
     async delete(req, res){
         try{
-            const result = await noteService.delete(req.params.id);
+            const result = await noteService.delete(req.params.id, req.body.userId);
             res.json(result)
         }catch(e){
             res.status(500).json({error: e.message});

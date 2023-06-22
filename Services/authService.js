@@ -18,7 +18,7 @@ class authService{
         if (candidate){
             throw new Error("User with this nickname already exists");
         }
-        const hashPassword = bcrypt.hashSync(password, 5);
+        const hashPassword = await bcrypt.hashSync(password, 5);
         const user = await User.create({nick_name: nick, password: hashPassword});
         return user.toJSON();
     }
@@ -28,7 +28,6 @@ class authService{
             throw new Error("No user found with this nickname");
         }
         const validPassword = await bcrypt.compare(password, user.password);
-        console.log(validPassword);
         if (!validPassword){
             throw new Error("Incorrect password");
         }

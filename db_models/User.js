@@ -1,5 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../database/db.js';
+import Note from './Note.js';
 
 class User extends Model{}
 
@@ -9,5 +10,7 @@ User.init({
     description: {type: DataTypes.STRING},
     picture: {type: DataTypes.STRING}
 },{sequelize, modelName: "user"});
+
+User.hasMany(Note);
 
 export default User;
